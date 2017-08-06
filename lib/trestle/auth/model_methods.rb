@@ -12,7 +12,7 @@ module Trestle
 
       module ClassMethods
         def authenticate(identifier, password)
-          user = find_by(Trestle.config.auth.authenticate_with => identifier) || NullUser.new
+          user = find(Trestle.config.auth.authenticate_with => identifier) || NullUser.new
           user.authenticate(password)
         end
       end

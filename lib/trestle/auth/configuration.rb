@@ -23,7 +23,7 @@ module Trestle
       }
 
       option :avatar, ->(user) {
-        gravatar(user.email)
+        ApplicationController.helpers.gravatar(user.email)
       }, evaluate: false
 
       option :locale, ->(user) {
