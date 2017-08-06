@@ -1,11 +1,11 @@
 <div class="userbox pull-right dropdown">
   <%= link_to "#", class: 'dropdown-toggle', data: { toggle: 'dropdown' } do %>
     <span class="name">
-      <%= format_user_name(current_user) %>
+      <%= ApplicationController.helpers.format_user_name(current_user) %>
       <span class="caret"></span>
     </span>
 
-    <%= avatar_for(current_user) %>
+    <%= ApplicationController.helpers.avatar_for(current_user) %>
   <% end %>
 
   <ul class="dropdown-menu dropdown-menu-right">
