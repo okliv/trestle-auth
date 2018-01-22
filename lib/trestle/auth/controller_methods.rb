@@ -12,15 +12,11 @@ module Trestle
         around_action :set_time_zone, if: :logged_in?
       end
 
-    protected
+      protected
       def current_user
         @current_user ||= begin
           if session[:trestle_user]
-<<<<<<< HEAD
-            Trestle.config.auth.user_scope.find(id: session[:trestle_user])
-=======
             Trestle.config.auth.find_user(session[:trestle_user])
->>>>>>> upstream/master
           elsif Trestle.config.auth.remember.enabled && token = cookies.signed[:trestle_remember_token]
             user = Trestle.config.auth.remember.authenticate(token)
             login!(user) if user
