@@ -22,12 +22,20 @@ module Trestle
         )
       }
 
+      option :find_user, ->(id) {
+        Trestle.config.auth.user_scope.find_by(id: id)
+      }
+
       option :avatar, ->(user) {
         ApplicationController.helpers.gravatar(user.email)
       }, evaluate: false
 
       option :locale, ->(user) {
         user.locale if user.respond_to?(:locale)
+      }
+
+      option :time_zone, ->(user) {
+        user.time_zone if user.respond_to?(:time_zone)
       }
 
       option :remember, Rememberable.new

@@ -51,6 +51,13 @@ module Trestle
               #   user.locale if user.respond_to?(:locale)
               # }
 
+              # Customize the method for determining the user's time zone.
+              # Defaults to user.time_zone (if the method is defined).
+              #
+              # config.auth.time_zone = ->(user) {
+              #   user.time_zone if user.respond_to?(:time_zone)
+              # }
+
               # Enable or disable remember me functionality. Defaults to true.
               #
               # config.auth.remember.enabled = false
@@ -63,6 +70,12 @@ module Trestle
               #
               # config.auth.remember.authenticate = ->(token) {
               #   User.authenticate_with_remember_token(token)
+              # }
+
+              # Customize the method for finding a user given an ID from the session.
+              #
+              # config.auth.remember.find_user = ->(id) {
+              #   User.find_by(id: id)
               # }
 
               # Customize the method for remembering a user.
